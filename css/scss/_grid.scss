@@ -18,12 +18,12 @@ $large-device: 1200px;
 		}
 	}
 	@else if $size == medium or $size == m {
-		@media screen and (min-width: #{$medium-device}) {
+		@media screen and (min-width: #{$medium-device}) and (max-width: (#{$large-device} - 1)) {
 			@content;
 		}
 	}
 	@else if $size == small or $size == s {
-		@media screen and (max-width: #{$small-device}) {
+		@media screen and (max-width: (#{$medium-device} - 1)) {
 			@content;
 		}
 	}
