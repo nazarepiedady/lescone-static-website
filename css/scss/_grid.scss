@@ -39,3 +39,10 @@ $large-device: 1200px;
 	}
 	@return $result;
 }
+
+// produção das classes da grade
+@for $column from 1 through $columns {
+	.grid-#{$column} {
+		width: grid($column);
+	}
+}
