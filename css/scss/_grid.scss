@@ -9,3 +9,22 @@ $large-device: 1200px;
 *, *::after, *::before {
 	box-sizing: border-box;
 }
+
+// mistura de consultas de media
+@mixin device($size) {
+	@if $size == large or $size == l {
+		@media screen and (min-width: #{$large-device}) {
+			@content;
+		}
+	}
+	@else if $size == medium or $size == m {
+		@media screen and (min-width: #{$medium-device}) {
+			@content;
+		}
+	}
+	@else if $size == small or $size == s {
+		@media screen and (max-width: #{$small-device}) {
+			@content;
+		}
+	}
+}
