@@ -4,3 +4,8 @@ $gutter: 20px;
 $small-device: 480px;
 $medium-device: 760px;
 $large-device: 1200px;
+
+// dimensionamento da caixa
+*, *::after, *::before {
+	box-sizing: border-box;
+}
