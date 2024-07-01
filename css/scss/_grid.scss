@@ -31,11 +31,11 @@ $large-device: 1200px;
 
 // função da grade
 @function grid($column, $offset: false) {
-	$width: $column / $columns * 100;
-	$result: calc(#{width}% - #{$gutter});
+	$width: $column / $columns * 100%;
+	$result: calc(#{$width} - #{$gutter});
 	@if $offset == offset {
 		$gutter: $gutter / 2;
-		$result: calc(#{width}% + #{$gutter});
+		$result: calc(#{$width} + #{$gutter});
 	}
 	@return $result;
 }
