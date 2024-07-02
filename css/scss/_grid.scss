@@ -110,3 +110,16 @@ $large-device: 1200px;
 .container {
 	@include container;
 }
+
+@mixin row {
+	margin-left: -$gutter / 2;
+	margin-right: -$gutter / 2;
+	position: relative;
+
+	@include device(small) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	@include clearfix;
+}
