@@ -65,3 +65,10 @@ $large-device: 1200px;
 [class^="grid-"] {
 	@include grid-structure;
 }
+
+// produção de classes de compensação
+@for $column from 1 through $columns {
+	.offset-#{$column} {
+		margin-left: grid($column, offset);
+	}
+}
