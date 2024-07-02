@@ -61,3 +61,7 @@ $large-device: 1200px;
 		margin-right: 0;
 	}
 }
+
+[class^='grid-'] {
+	@include grid-structure;
+}
