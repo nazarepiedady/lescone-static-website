@@ -106,3 +106,7 @@ $large-device: 1200px;
 
 	@include clearfix;
 }
+
+.container {
+	@include container;
+}
