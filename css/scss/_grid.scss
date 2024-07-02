@@ -79,3 +79,12 @@ $large-device: 1200px;
 		margin-left: 0;
 	}
 }
+
+// mistura de correção de flutuação
+@mixin clearfix {
+	&::after, &::before {
+		content: '';
+		clear: both;
+		display: table;
+	}
+}
