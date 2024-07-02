@@ -70,5 +70,12 @@ $large-device: 1200px;
 @for $column from 1 through $columns {
 	.offset-#{$column} {
 		margin-left: grid($column, offset);
+		@extend %offset;
+	}
+}
+
+@include device(small) {
+	%offset {
+		margin-left: 0;
 	}
 }
