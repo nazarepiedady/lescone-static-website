@@ -88,3 +88,21 @@ $large-device: 1200px;
 		display: table;
 	}
 }
+
+@mixin container {
+	margin: 0 auto;
+	position: relative;
+	max-width: $large-device;
+
+	@include device(medium) {
+		max-width: $medium-device;
+	}
+
+	@include device(small) {
+		max-width: $small-device;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	@include clearfix;
+}
