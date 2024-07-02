@@ -123,3 +123,7 @@ $large-device: 1200px;
 
 	@include clearfix;
 }
+
+.row {
+	@include row;
+}
