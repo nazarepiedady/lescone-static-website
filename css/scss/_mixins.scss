@@ -1,0 +1,15 @@
+@use 'sass:math';
+@use 'variables';
+
+
+@function em($pixel, $contexto: 16) {
+	@return #{math.div($pixel, $contexto) * 1em};
+}
+
+@mixin tipo-1($size) {
+	font-family: variables.$font-1;
+	@if $size == 18 {
+		font-size: em(18);
+		line-height: em(30, 18);
+	}
+}
