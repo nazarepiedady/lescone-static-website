@@ -13,3 +13,14 @@
 		line-height: em(30, 18);
 	}
 }
+
+@mixin tipo-2($size) {
+	font-family: varibales.$font-2;
+	@if $size == 18 {
+		font-size: em(18);
+		line-height: em(30, 18);
+	} @else if $size == 24 {
+		font-size: em(24);
+		line-height: em(30, 24);
+	}
+}
