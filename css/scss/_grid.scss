@@ -1,12 +1,6 @@
 @use 'sass:math';
-
-
-// variaveis da grade
-$columns: 12;
-$gutter: 20px;
-$small-device: 480px;
-$medium-device: 760px;
-$large-device: 1200px;
+@use 'functions';
+@use 'variables';
 
 // dimensionamento da caixa
 *, *::after, *::before {
@@ -16,37 +10,28 @@ $large-device: 1200px;
 // mistura de consultas de media
 @mixin device($size) {
 	@if $size == large or $size == l {
-		@media screen and (min-width: #{$large-device}) {
+		@media screen and (min-width: #{variables.$large-device}) {
 			@content;
 		}
 	}
 	@else if $size == medium or $size == m {
-		@media screen and (min-width: #{$medium-device}) and (max-width: #{$large-device - 1}) {
+		@media screen and
+			(min-width: #{variables.$medium-device}) and
+			(max-width: #{variables.$large-device - 1}) {
 			@content;
 		}
 	}
 	@else if $size == small or $size == s {
-		@media screen and (max-width: #{$medium-device - 1}) {
+		@media screen and (max-width: #{variables.$medium-device - 1}) {
 			@content;
 		}
 	}
 }
 
-// função da grade
-@function grid($column, $offset: false) {
-	$width: math.div($column, $columns) * 100%;
-	$result: calc(#{$width} - #{$gutter});
-	@if $offset == offset {
-		$gutter: math.div($gutter, 2);
-		$result: calc(#{$width} + #{$gutter});
-	}
-	@return $result;
-}
-
 // produção das classes da grade
-@for $column from 1 through $columns {
+@for $column from 1 through variables.$columns {
 	.grid-#{$column} {
-		width: grid($column);
+		width: functions.grid($column);
 	}
 }
 
@@ -54,8 +39,8 @@ $large-device: 1200px;
 @mixin grid-structure {
 	float: left;
 	min-height: 1px;
-	margin-left: math.div($gutter, 2);
-	margin-right: math.div($gutter, 2);
+	margin-left: math.div(variables.$gutter, 2);
+	margin-right: math.div(variables.$gutter, 2);
 
 	@include device(small) {
 		width: 100%;
@@ -70,7 +55,7 @@ $large-device: 1200px;
 }
 
 // produção de classes de compensação
-@for $column from 1 through $columns {
+@for $column from 1 through variables.$columns {
 	.offset-#{$column} {
 		margin-left: grid($column, offset);
 		@extend %offset;
@@ -95,14 +80,14 @@ $large-device: 1200px;
 @mixin container {
 	margin: 0 auto;
 	position: relative;
-	max-width: $large-device;
+	max-width: variables.$large-device;
 
 	@include device(medium) {
-		max-width: $medium-device;
+		max-width: variables.$medium-device;
 	}
 
 	@include device(small) {
-		max-width: $small-device;
+		max-width: variables.$small-device;
 		padding-left: 10px;
 		padding-right: 10px;
 	}
@@ -115,8 +100,8 @@ $large-device: 1200px;
 }
 
 @mixin row {
-	margin-left: math.div(-$gutter, 2);
-	margin-right: math.div(-$gutter, 2);
+	margin-left: math.div(-#{variables.$gutter}, 2);
+	margin-right: math.div(-#{variables.$gutter}, 2);
 	position: relative;
 
 	@include device(small) {
