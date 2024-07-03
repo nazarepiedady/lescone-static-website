@@ -1,32 +1,107 @@
-@use 'sass:math';
 @use 'variables';
+@use 'functions';
 
+@use 'sass:math';
 
-@function em($pixel, $contexto: 16) {
-	@return #{math.div($pixel, $contexto)}em;
-}
 
 @mixin tipo-1($size) {
 	font-family: variables.$font-1;
 	@if $size == 18 {
-		font-size: em(18);
-		line-height: em(30, 18);
+		font-size: functions.em(18);
+		line-height: functions.em(30, 18);
 	}
 }
 
 @mixin tipo-2($size) {
 	font-family: varibales.$font-2;
 	@if $size == 18 {
-		font-size: em(18);
-		line-height: em(30, 18);
+		font-size: functions.em(18);
+		line-height: functions.em(30, 18);
 	} @else if $size == 24 {
-		font-size: em(24);
-		line-height: em(30, 24);
+		font-size: functions.em(24);
+		line-height: functions.em(30, 24);
 	}
 }
 
+// mistura de sombra de caixa
 @mixin box-shadow($shadow...) {
 	-webkit-box-shadow: $shadow;
 	-moz-box-shadow: $shadow;
 	box-shadow: $shadow;
+}
+
+// mistura de consultas de media
+@mixin device($size) {
+	@if $size == large or $size == l {
+		@media screen and (min-width: #{variables.$large-device}) {
+			@content;
+		}
+	}
+	@else if $size == medium or $size == m {
+		@media screen and
+			(min-width: #{variables.$medium-device}) and
+			(max-width: #{variables.$large-device - 1}) {
+			@content;
+		}
+	}
+	@else if $size == small or $size == s {
+		@media screen and (max-width: #{variables.$medium-device - 1}) {
+			@content;
+		}
+	}
+}
+
+// mistura da estrutura da grade
+@mixin grid-structure {
+	float: left;
+	min-height: 1px;
+	margin-left: math.div(variables.$gutter, 2);
+	margin-right: math.div(variables.$gutter, 2);
+
+	@include device(small) {
+		width: 100%;
+		float: none;
+		margin-left: 0;
+		margin-right: 0;
+	}
+}
+
+@mixin container {
+	margin: 0 auto;
+	position: relative;
+	max-width: variables.$large-device;
+
+	@include device(medium) {
+		max-width: variables.$medium-device;
+	}
+
+	@include device(small) {
+		max-width: variables.$small-device;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	@include clearfix;
+}
+
+@mixin row {
+	margin-left: math.div(-#{variables.$gutter}, 2);
+	margin-right: math.div(-#{variables.$gutter}, 2);
+	position: relative;
+
+	@include device(small) {
+		margin-left: 0;
+		margin-right: 0;
+	}
+
+	@include clearfix;
+}
+
+// mistura de correção de flutuação
+@mixin clearfix {
+	&::after, &::before {
+		content: '';
+		clear: both;
+		display: table;
+	}
 }

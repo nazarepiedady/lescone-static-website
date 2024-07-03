@@ -1,31 +1,13 @@
-@use 'sass:math';
+@use 'mixins';
 @use 'functions';
 @use 'variables';
+
+@use 'sass:math';
+
 
 // dimensionamento da caixa
 *, *::after, *::before {
 	box-sizing: border-box;
-}
-
-// mistura de consultas de media
-@mixin device($size) {
-	@if $size == large or $size == l {
-		@media screen and (min-width: #{variables.$large-device}) {
-			@content;
-		}
-	}
-	@else if $size == medium or $size == m {
-		@media screen and
-			(min-width: #{variables.$medium-device}) and
-			(max-width: #{variables.$large-device - 1}) {
-			@content;
-		}
-	}
-	@else if $size == small or $size == s {
-		@media screen and (max-width: #{variables.$medium-device - 1}) {
-			@content;
-		}
-	}
 }
 
 // produção das classes da grade
@@ -35,23 +17,8 @@
 	}
 }
 
-// mistura da estrutura da grade
-@mixin grid-structure {
-	float: left;
-	min-height: 1px;
-	margin-left: math.div(variables.$gutter, 2);
-	margin-right: math.div(variables.$gutter, 2);
-
-	@include device(small) {
-		width: 100%;
-		float: none;
-		margin-left: 0;
-		margin-right: 0;
-	}
-}
-
 [class^="grid-"] {
-	@include grid-structure;
+	@include mixins.grid-structure;
 }
 
 // produção de classes de compensação
@@ -62,56 +29,16 @@
 	}
 }
 
-@include device(small) {
+@include mixins.device(small) {
 	%offset {
 		margin-left: 0;
 	}
 }
 
-// mistura de correção de flutuação
-@mixin clearfix {
-	&::after, &::before {
-		content: '';
-		clear: both;
-		display: table;
-	}
-}
-
-@mixin container {
-	margin: 0 auto;
-	position: relative;
-	max-width: variables.$large-device;
-
-	@include device(medium) {
-		max-width: variables.$medium-device;
-	}
-
-	@include device(small) {
-		max-width: variables.$small-device;
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-
-	@include clearfix;
-}
-
 .container {
-	@include container;
-}
-
-@mixin row {
-	margin-left: math.div(-#{variables.$gutter}, 2);
-	margin-right: math.div(-#{variables.$gutter}, 2);
-	position: relative;
-
-	@include device(small) {
-		margin-left: 0;
-		margin-right: 0;
-	}
-
-	@include clearfix;
+	@include mixins.container;
 }
 
 .row {
-	@include row;
+	@include mixins.row;
 }
