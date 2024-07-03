@@ -1,0 +1,46 @@
+@use 'mixins';
+@use 'functions';
+@use 'variables';
+
+
+body {
+	color: variables.$cinza;
+	background-color: variables.$bege-claro;
+	border: 10px solid variables.$bege-medio;
+
+	@include mixins.device(small) {
+		border: none;
+	}
+}
+
+img {
+	display: block;
+	max-width: 100%;
+}
+
+p {
+	@include mixins.tipo-1(18);
+}
+
+.titulo {
+	@include mixins.tipo-1(18);
+
+	text-transform: uppercase;
+
+	@include mixins.device(small) {
+		margin-bottom: 40px;
+	}
+
+	&::after {
+		width: 75%;
+		height: 2px;
+		content: '';
+		float: right;
+		display: block;
+		margin-top: 14px;
+
+		@include mixins.device(medium) {
+			width: 60%;
+		}
+	}
+}
