@@ -3,7 +3,7 @@
 
 
 @function em($pixel, $contexto: 16) {
-	@return #{math.div($pixel, $contexto) * 1em};
+	@return #{math.div($pixel, $contexto)}em;
 }
 
 @mixin tipo-1($size) {
