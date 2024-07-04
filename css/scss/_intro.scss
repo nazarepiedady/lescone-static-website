@@ -27,3 +27,30 @@
 		border-bottom: 2px solid variables.$cinza;
 	}
 }
+
+.intro-telefone {
+	color: variables.$bege-escuro;
+
+	@include mixins.device(small) {
+		margin-bottom: 40px;
+	}
+
+	&::after {
+		display: block;
+		font-size: 220px;
+		color: variables.$cinza;
+		margin-top: 200px;
+		content: '/ / / /';
+		letter-spacing: -90px;
+
+		@include mixins.device(medium) {
+			margin-top: 80px;
+			font-size: 160px;
+			letter-spacing: -70px;
+		}
+
+		@include mixins.device(small) {
+			display: none;
+		}
+	}
+}
