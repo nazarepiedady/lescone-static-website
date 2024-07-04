@@ -1,0 +1,11 @@
+@use 'mixins';
+@use 'variables';
+
+
+.intro {
+	margin-top: 60px;
+
+	@include mixins.device(small) {
+		margin-top: 20px;
+	}
+}
