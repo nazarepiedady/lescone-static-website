@@ -13,3 +13,17 @@
 .logo {
 	margin-bottom: 60px;
 }
+
+.intro-info {
+	max-width: 320px;
+	border-right: 2px solid variables.$cinza;
+
+	p {
+		padding-top: 10px;
+	}
+
+	p:first-child {
+		padding-bottom: 10px;
+		border-bottom: 2px solid variables.$cinza;
+	}
+}
