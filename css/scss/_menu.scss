@@ -1,0 +1,14 @@
+@use 'mixins';
+@use 'variables';
+@use 'functions';
+
+
+.menu {
+	margin-top: 120px;
+	margin-bottom: 120px;
+
+	@include mixins.device(small) {
+		margin-top: 60px;
+		margin-bottom: 60px;
+	}
+}
