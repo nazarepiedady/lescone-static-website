@@ -13,7 +13,7 @@
 }
 
 @mixin tipo-2($size) {
-	font-family: varibales.$fonte-2;
+	font-family: variables.$fonte-2;
 	@if $size == 18 {
 		font-size: functions.em(18);
 		line-height: functions.em(30, 18);
