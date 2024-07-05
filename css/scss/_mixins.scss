@@ -85,8 +85,8 @@
 }
 
 @mixin row {
-	margin-left: math.div(-#{variables.$gutter}, 2);
-	margin-right: math.div(-#{variables.$gutter}, 2);
+	margin-left: -#{math.div(variables.$gutter, 2)};
+	margin-right: -#{math.div(variables.$gutter, 2)};
 	position: relative;
 
 	@include device(small) {
