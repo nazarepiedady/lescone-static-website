@@ -55,3 +55,15 @@ input.button {
 								   3px 3px 0 0 variables.$bege-escuro);
 	}
 }
+
+.contato-info {
+	color: variables.$bege-escuro;
+	display: block;
+	margin-top: 2em;
+	margin-bottom: 3em;
+	@include mixins.device(large) {
+		float: right;
+		margin-top: -3em;
+		text-align: right;
+	}
+}
