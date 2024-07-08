@@ -36,3 +36,22 @@
 		height: 120px;
 	}
 }
+
+input.button {
+	@include mixins.tipo-1(18);
+	cursor: pointer;
+	color: variables.$bege-escuro;
+	text-transform: uppercase;
+	border: 2px solid variables.$bege-escuro;
+	background-color: transparent;
+	display: block;
+	width: 120px;
+	padding-top: 5px;
+	transition: 0.3s;
+	@include mixins.box-shadow(5px 5px 0 -2px variables.$bege-medio,
+							   5px 5px 0 0 variables.$bege-escuro);
+	&:hover {
+		@include mixins.box-shadow(3px 3px 0 -2px variables.$bege-medio,
+								   3px 3px 0 0 variables.$bege-escuro);
+	}
+}
