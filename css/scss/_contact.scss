@@ -12,3 +12,27 @@
 		margim-bottom: 60px;
 	}
 }
+
+.contato form {
+	label {
+		display: block;
+		@include mixins.tipo-1(18);
+	}
+	input[type="text"], textarea {
+		width: 100%;
+		height: 40px;
+		padding: 0 5px;
+		color: variables.$cinza;
+		margin-bottom: 1em;
+		border: 2px solid variables.$bege-escuro;
+		@include mixins.tipo-1(18);
+		background-color: transparent;
+		&:hover, &:focus {
+			outline: none;
+			border-color: variables.$bege-medio;
+		}
+	}
+	textarea {
+		height: 120px;
+	}
+}
