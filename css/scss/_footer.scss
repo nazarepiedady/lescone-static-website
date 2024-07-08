@@ -1,0 +1,25 @@
+@use 'mixins';
+@use 'variables';
+
+
+footer {
+	padding: 20px 0;
+	background-color: variables.$cinza;
+	@include mixins.box-shadow(0 0 0 10px variables.$cinza);
+
+	p {
+		color: variables.$bege-claro;
+		@include mixins.device(small) {
+			text-align: center;
+		}
+	}
+
+	a img {
+		float: right;
+
+		@include mixins.device(small) {
+			float: none;
+			margin: 20px auto;
+		}
+	}
+}
